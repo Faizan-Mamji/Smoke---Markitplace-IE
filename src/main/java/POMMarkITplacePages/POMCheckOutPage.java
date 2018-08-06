@@ -1,9 +1,7 @@
 package POMMarkITplacePages;
 
-import static org.testng.Assert.assertEquals;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
