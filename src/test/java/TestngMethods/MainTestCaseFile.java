@@ -293,9 +293,9 @@ public class MainTestCaseFile extends MainDriverClass {
 
 	@AfterTest
 	public void afterTest() throws Exception {
-		TestExecutionEmail ObjEmail= new TestExecutionEmail(maindriver);
+		//TestExecutionEmail ObjEmail= new TestExecutionEmail(maindriver);
 		maindriver.quit();
-		TimeUnit.SECONDS.sleep(30);
-		ObjEmail.EmailFunction();
+		/*TimeUnit.SECONDS.sleep(30);
+		ObjEmail.EmailFunction();*/
 	}
 }
