@@ -45,7 +45,7 @@ public class POMSearchListing {
 	By AddedToFavoriteslinkbtn = By.xpath("(//a[@class='linkdisable tt-wrapper'])[1]");
 	By FavoritesDelConditionCheck = By.xpath("//a[contains(text(),'Delete')]");
 	By AddToCartModalClose = By.xpath("(//div[@class='modal-content']/button[@title='Close (Esc)'])[2]");
-	By FavoritesLinkText = By.linkText("Favorites");
+	By FavoritesLinkText = By.xpath("//div[@class='container clearfix']//a[contains(text(),'Favorites')]");
 	By CartIcon = By.xpath("//div[@class='shopping-cart']//a");
 	By CartRemoveAll = By.xpath("(//div[@class='cart-footer']//a)[1]");
 	By CartRemoveModal = By.xpath("//button[@class='btn btn-primary remove-all-item']");
