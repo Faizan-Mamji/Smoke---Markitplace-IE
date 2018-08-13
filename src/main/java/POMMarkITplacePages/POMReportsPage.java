@@ -47,16 +47,16 @@ public class POMReportsPage {
 	By InvoicesNavLink = By.linkText("Invoices");
 	By InvoiceLineNavLink = By.linkText("Invoice Line");
 	By LicensesNavLink = By.linkText("Licenses");
-	By OrdersNavLink = By.linkText("Orders");
+	By OrdersNavLink = By.xpath("//div[@class='submenu-container active']//a[contains(text(),'Orders')]");
 	By OrderLineNavLink = By.linkText("Order Line");
-	By QuotesNavLink = By.linkText("Quotes");
+	By QuotesNavLink = By.xpath("//div[@class='submenu-container active']//a[contains(text(),'Quotes')]");
 	By ReceivingLogNavLink = By.linkText("Receiving Log");
 	By ShipmentsNavLink = By.linkText("Shipments");
 	By StandardsNavLink = By.linkText("Standards");
 	By WarrantiesNavLink = By.linkText("Warranties");
 	By EmailIconClick = By.xpath("(//span[@class='product-list-actions']//a)[1]");
 	By EmailAddress = By.id("email_addresses");
-	By EmailSendBtn = By.xpath("(//div[@class='modal-content']//button)[17]");
+	By EmailSendBtn = By.xpath("//div[@class='white-popup popup-small zoom-anim-dialog mfp-show email-modal']//button[1]");
 
 	public void AssetPage_Functionality() {
 
