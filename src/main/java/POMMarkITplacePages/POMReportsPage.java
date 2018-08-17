@@ -47,9 +47,9 @@ public class POMReportsPage {
 	By InvoicesNavLink = By.linkText("Invoices");
 	By InvoiceLineNavLink = By.linkText("Invoice Line");
 	By LicensesNavLink = By.linkText("Licenses");
-	By OrdersNavLink = By.xpath("//div[@class='submenu-container active']//a[contains(text(),'Orders')]");
+	By OrdersNavLink = By.xpath("(//div[@data-submenu-id='reports']//a)[8]");
 	By OrderLineNavLink = By.linkText("Order Line");
-	By QuotesNavLink = By.xpath("//div[@class='submenu-container active']//a[contains(text(),'Quotes')]");
+	By QuotesNavLink = By.xpath("(//div[@data-submenu-id='reports']//a)[10]");
 	By ReceivingLogNavLink = By.linkText("Receiving Log");
 	By ShipmentsNavLink = By.linkText("Shipments");
 	By StandardsNavLink = By.linkText("Standards");
