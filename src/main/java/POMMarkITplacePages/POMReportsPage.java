@@ -71,8 +71,8 @@ public class POMReportsPage {
 			sf.assertEquals(AssetPageTitle, driver.getTitle());
 			logg.info("Assets Report Assertion Verified successfully");
 			logg.info("Assets Report page opens successfully");
-			WebElement ColumnFrom = driver.findElement(By.xpath("(//label[@class='drag-handle sort-arrow none'])[2]"));
-			WebElement ColumnTo = driver.findElement(By.xpath("(//label[@class='drag-handle sort-arrow none'])[5]"));
+			//WebElement ColumnFrom = driver.findElement(By.xpath("(//label[@class='drag-handle sort-arrow none'])[2]"));
+			//WebElement ColumnTo = driver.findElement(By.xpath("(//label[@class='drag-handle sort-arrow none'])[5]"));
 			TimeUnit.SECONDS.sleep(2);
 			driver.findElement(EmailIconClick).click();
 			logg.info("Email Modal opens successfully");
