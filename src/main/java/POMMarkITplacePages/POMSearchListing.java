@@ -12,6 +12,8 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
+import DriverMainPackage.MainDriverClass;
+
 public class POMSearchListing {
 
 	public static WebDriver driver;
@@ -40,12 +42,12 @@ public class POMSearchListing {
 	By AddToCartBtn = By.xpath("(//a[@class='add_to_cart btn btn-primary'])[1]");
 	By AddToFavoriteslinkbtn = By.xpath("(//div[@class='compare-container clearfix']/a)[1]");
 	By FavoritesCheckBoxSelectAll = By.xpath("//div[@class='left']//span[@class='control__indicator']");
-	By FavoritesDeleteBtn = By.xpath("//div[@class='btn-col']/a[@class='btn']");
+	By FavoritesDeleteBtn = By.xpath("(//div[@class='left']//a)[2]");
 	By FavoritesModalDelBtn = By.xpath("(//div[@class='btn-container clearfix']/button)[1]");
 	By AddedToFavoriteslinkbtn = By.xpath("(//a[@class='linkdisable tt-wrapper'])[1]");
 	By FavoritesDelConditionCheck = By.xpath("//a[contains(text(),'Delete')]");
 	By AddToCartModalClose = By.xpath("(//div[@class='modal-content']/button[@title='Close (Esc)'])[2]");
-	By FavoritesLinkText = By.xpath("//div[@class='container clearfix']//a[contains(text(),'Favorites')]");
+	By FavoritesLinkText = By.xpath("(//a[contains(text(),'Favorites')])[2]");
 	By CartIcon = By.xpath("//div[@class='shopping-cart']//a");
 	By CartRemoveAll = By.xpath("(//div[@class='cart-footer']//a)[1]");
 	By CartRemoveModal = By.xpath("//button[@class='btn btn-primary remove-all-item']");
@@ -53,6 +55,8 @@ public class POMSearchListing {
 
 	public void OpenSearchPage_AddToCart_And_Verifyproducts_On_FavoritesPage() throws InterruptedException {
 		SoftAssert sf =new SoftAssert();
+		MainDriverClass objDriver =new MainDriverClass();
+		String FallBackUrl = objDriver.getConfigValue("MainUrl");
 		try {
 			logg.info("SearchListing TestCase Starts");
 			driver.findElement(SearchBox).sendKeys("printers");
@@ -139,7 +143,8 @@ public class POMSearchListing {
 
 			else {
 				logg.info("Add To Favorites Get class = Disable");
-				driver.findElement(FavoritesLinkText).click();
+				//driver.findElement(FavoritesLinkText).click();
+				driver.navigate().to(FallBackUrl+"shop/favorites");
 				TimeUnit.MILLISECONDS.sleep(18000);
 				logg.info("Favorites Page Opens Successfully");
 				sf.assertEquals(FavoritesPageTitle, driver.getTitle());

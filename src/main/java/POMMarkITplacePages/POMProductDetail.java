@@ -31,7 +31,7 @@ public class POMProductDetail {
 	
 	By productimageclick = By.xpath("(//div[@class='product-list-grid clearfix print-product-list grid']//a[@class='image-link'])[1]");
 	By EmailIconClick= By.xpath("(//span[@class='product-list-actions']/a)[1]");
-	By EmailAddress = By.id("email_addresses");
+	By EmailAddress = By.name("email_addresses");
 	By EmailSendBtn= By.xpath("//button[@class='btn btn-primary']");
 	
 	public void Navigate_PDP_Page_From_SearchListing() throws InterruptedException 
