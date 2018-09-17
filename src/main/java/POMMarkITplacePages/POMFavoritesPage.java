@@ -11,6 +11,8 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
+import DriverMainPackage.MainDriverClass;
+
 public class POMFavoritesPage {
 
 	public static WebDriver driver;
@@ -40,10 +42,13 @@ public class POMFavoritesPage {
 
 	public void Favorites_Page_TestFunctionality() throws InterruptedException {
 		// PropertyConfigurator.configure("log4j.properties");
-		SoftAssert sf =new SoftAssert();
+		MainDriverClass objDriver = new MainDriverClass();
+		String FallBackUrl = objDriver.getConfigValue("MainUrl");
+		SoftAssert sf = new SoftAssert();
 		try {
 			logg.info("Favorites TestCase Starts Here");
-			driver.findElement(FavoritesLinkText).click();
+			// driver.findElement(FavoritesLinkText).click();
+			driver.navigate().to(FallBackUrl + "shop/favorites");
 			TimeUnit.MILLISECONDS.sleep(15000);
 			logg.info("Favorites page opens successfully");
 			sf.assertEquals(FavoritesPageTitle, driver.getTitle());
@@ -70,7 +75,7 @@ public class POMFavoritesPage {
 			logg.info(
 					"POMFavoritesPage - Exception!!! - There must be some issue on favorites page while doing add to cart"
 							+ ex.getMessage());
-			
+
 			Assert.fail("Failed in class - POMFavoritesPage");
 		}
 	}

@@ -39,14 +39,14 @@ public class POMSearchListing {
 
 	// POM for search listing page and favorites page for condition check
 	By SearchBox = By.id("x_main-search");
-	By AddToCartBtn = By.xpath("(//a[@class='add_to_cart btn btn-primary'])[1]");
+	By AddToCartBtn = By.xpath("(//div[@class='cart-container clearfix']//a)[1]");
 	By AddToFavoriteslinkbtn = By.xpath("(//div[@class='compare-container clearfix']/a)[1]");
 	By FavoritesCheckBoxSelectAll = By.xpath("//div[@class='left']//span[@class='control__indicator']");
 	By FavoritesDeleteBtn = By.xpath("(//div[@class='left']//a)[2]");
 	By FavoritesModalDelBtn = By.xpath("(//div[@class='btn-container clearfix']/button)[1]");
 	By AddedToFavoriteslinkbtn = By.xpath("(//a[@class='linkdisable tt-wrapper'])[1]");
 	By FavoritesDelConditionCheck = By.xpath("//a[contains(text(),'Delete')]");
-	By AddToCartModalClose = By.xpath("(//div[@class='modal-content']/button[@title='Close (Esc)'])[2]");
+	By AddToCartModalClose = By.xpath("(//button[@class='mfp-close'])[2]");
 	By FavoritesLinkText = By.xpath("(//a[contains(text(),'Favorites')])[2]");
 	By CartIcon = By.xpath("//div[@class='shopping-cart']//a");
 	By CartRemoveAll = By.xpath("(//div[@class='cart-footer']//a)[1]");
@@ -77,7 +77,8 @@ public class POMSearchListing {
 				// Here Navigate to cart page and to delete the all products from cart
 
 				logg.info("Click on cart icon");
-				driver.findElement(CartIcon).click();
+				//driver.findElement(CartIcon).click();
+				driver.navigate().to(FallBackUrl+"shop/cart");
 				TimeUnit.MILLISECONDS.sleep(10000);
 				logg.info("Cart Page Opens successfully");
 				CartPagetext = driver.findElement(CheckCartText).getText();
@@ -162,7 +163,8 @@ public class POMSearchListing {
 				// Here Navigate to cart page and to checking the products exist in cart or not
 
 				logg.info("Click on cart icon");
-				driver.findElement(CartIcon).click();
+				//driver.findElement(CartIcon).click();
+				driver.navigate().to(FallBackUrl+"shop/cart");
 				TimeUnit.MILLISECONDS.sleep(10000);
 				logg.info("Cart Page Opens successfully");
 				CartPagetext = driver.findElement(CheckCartText).getText();
