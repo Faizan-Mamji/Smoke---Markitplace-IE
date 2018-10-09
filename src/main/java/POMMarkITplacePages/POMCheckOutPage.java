@@ -38,13 +38,16 @@ public class POMCheckOutPage {
 	By CheckBillingAddress = By.xpath("//div[@class='step-subsection last']");
 	By OpenBillingAddressDropdown = By.xpath("//div[@class='predictive-dropdown-arrow']");
 	By SelectBillingAddressValue = By.xpath("//div[@class='predictive-quickfind-container']//li[1]");
+	// By OpenChekoutDropdown = By.xpath("(//select[@class='native-drop
+	// native-drop-checkout'])");
+	By SelectCheckoutValue = By.xpath("");
 
 	By SaveBtn = By.xpath("//a[contains(text(),'Save & Continue')]");
 
 	// POM Of Step 2 (Shipping Information)
 	By SelectAddress = By.xpath("(//div[@class='multiselect-address']//ul//li)[1]");
 	By UseThisAddressBtn = By.xpath("//a[contains(text(),'Use This Address')]");
-	By CustomMessage = By.xpath("(//div[@class='fourcolumns']//div)[1]");
+	By CustomMessage = By.xpath("(//div[@class='fourcolumns']//div//label)[1]");
 	By CustomBox = By.xpath("//div[@class='fourcolumns']");
 
 	// POM Of Step 3 (Notes for Recipient and Confirmations)
@@ -147,17 +150,36 @@ public class POMCheckOutPage {
 
 		try {
 			// Start Checkout Step 1
-			// driver.navigate().to("http://markitplace-qa.arpatech.com/shop/cart/checkout");
+			driver.navigate().to("http://markitplace-qa.arpatech.com/shop/cart/checkout");
 			logg.info("CheckOut TestCase Starts Here");
 			WebElement checkoutstep1 = driver.findElement(SelectPaymentBox);
-			List<WebElement> elem = checkoutstep1.findElements(By.tagName("input"));
-			int count = elem.size();
+			List<WebElement> textboxelem = checkoutstep1.findElements(By.tagName("input"));
+			int count = textboxelem.size();
+			List<WebElement> dropdownelement = checkoutstep1.findElements(By.tagName("select"));
+			int drpcount = dropdownelement.size();
 			logg.info("Total textbox appears for Select Payment Method is " + count);
-			for (int i = 1; i <= count; i++) {
-				driver.findElement(By.xpath("(//input[@type='text'])[" + i + "]"))
-						.sendKeys(String.valueOf(Randomvalue));
-				TimeUnit.SECONDS.sleep(3);
-				logg.info("Total textbox appears for Select Payment Method is " + count);
+			if (count > 0) {
+				for (int i = 1; i <= count; i++) {
+					// String CheckLabels=
+					// driver.findElement(By.xpath("(//div[@class='row']//div//select)[1]")).getTagName();
+					// if(CheckLabels.contains("")) {
+					driver.findElement(By.xpath("(//input[@type='text'])[" + i + "]"))
+							.sendKeys(String.valueOf(Randomvalue));
+					TimeUnit.SECONDS.sleep(3);
+					//logg.info("Total textbox appears for Select Payment Method is " + count);
+				}
+			}
+
+			if (drpcount > 0) {
+				for (int d = 1; d <= drpcount; d++) {
+					driver.findElement(By.xpath("(//select[@class='native-drop native-drop-checkout'])[" + d + "]"))
+							.click();
+					logg.info("Dropdown Opens Successfully!");
+					TimeUnit.SECONDS.sleep(2);
+					driver.findElement(
+							By.xpath("(//select[@class='native-drop native-drop-checkout'])[" + d + "]//option[1]"))
+							.click();
+				}
 			}
 
 			String BillingAddressText = driver.findElement(CheckBillingAddress).getText();
@@ -193,23 +215,41 @@ public class POMCheckOutPage {
 			logg.info("Get some label text i.e " + GetCustomText);
 			if (GetCustomText != "") {
 				WebElement Customtextboxes = driver.findElement(CustomBox);
-				List<WebElement> CustomFieds = Customtextboxes.findElements(By.tagName("label"));
-				int TotalCount = CustomFieds.size();
+				List<WebElement> CustomTxtFieds = Customtextboxes.findElements(By.tagName("input"));
+				int TotalTxtCount = CustomTxtFieds.size();
+				List<WebElement> CustomDrpFieds = Customtextboxes.findElements(By.tagName("select"));
+				int TotalDrpCount = CustomDrpFieds.size();
 
-				System.out.println(TotalCount);
+				// System.out.println(TotalCount);
 
-				for (int j = 1; j <= TotalCount; j++) {
-					WebElement CustomfieldsTextBox = driver
-							.findElement(By.xpath("(//div[@class='fourcolumns']//div//textarea)[" + j + "]"));
-					TimeUnit.SECONDS.sleep(2);
-					action.moveToElement(CustomfieldsTextBox);
-					action.click();
-					TimeUnit.SECONDS.sleep(2);
-					action.sendKeys("Testing");
-					TimeUnit.SECONDS.sleep(2);
-					logg.info("Fill the textbox no# " + j);
-					action.build().perform();
-					TimeUnit.SECONDS.sleep(2);
+				if (TotalTxtCount > 0) {
+					for (int j = 1; j <= TotalTxtCount; j++) {
+						WebElement CustomfieldsTextBox = driver
+								.findElement(By.xpath("(//div[@class='fourcolumns']//div//textarea)[" + j + "]"));
+						TimeUnit.SECONDS.sleep(2);
+						action.moveToElement(CustomfieldsTextBox);
+						action.click();
+						TimeUnit.SECONDS.sleep(2);
+						action.sendKeys("Testing");
+						TimeUnit.SECONDS.sleep(2);
+						logg.info("Fill the textbox no# " + j);
+						action.build().perform();
+						TimeUnit.SECONDS.sleep(2);
+					}
+				}
+
+				if (TotalDrpCount > 0) {
+					for (int k = 1; k <= TotalDrpCount; k++) {
+						driver.findElement(By.xpath("(//select[@class='native-drop native-drop-checkout'])[" + k + "]"))
+								.click();
+						logg.info("Dropdown selection opens for custom message");
+						TimeUnit.SECONDS.sleep(2);
+						driver.findElement(By.xpath(
+								"(//select[@class='native-drop native-drop-checkout'])[" + k + "]//option[" + k + "]"))
+								.click();
+						logg.info("Dropdown " + k + "selected successfully");
+						TimeUnit.SECONDS.sleep(3);
+					}
 				}
 			}
 
