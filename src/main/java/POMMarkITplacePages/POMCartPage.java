@@ -29,7 +29,7 @@ public class POMCartPage {
 	By CartIcon = By.xpath("//div[@class='shopping-cart']//a");
 	By CartPageQtyBox = By.xpath("(//div[@class='qty']//input)[1]");
 	By CartEditQtyUpdate = By.xpath("(//a[@class='edit-qty'])[2]");
-	By ProceedCheckout = By.xpath("//div[@class='sticky-rightbox-fixed']//a");
+	By ProceedCheckout = By.xpath("(//div[@class='sticky-rightbox-fixed']//a)[1]");
 
 	public void Navigate_Cart_Page_Check_Functionality() {
 		SoftAssert sf= new SoftAssert();
