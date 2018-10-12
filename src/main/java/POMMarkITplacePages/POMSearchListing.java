@@ -51,7 +51,7 @@ public class POMSearchListing {
 	By CartIcon = By.xpath("//div[@class='shopping-cart']//a");
 	By CartRemoveAll = By.xpath("(//div[@class='cart-footer']//a)[1]");
 	By CartRemoveModal = By.xpath("//button[@class='btn btn-primary remove-all-item']");
-	By CheckCartText = By.xpath("//div[@class='cart-header lower-shadow-medium-down fivelayer  ']//h2");
+	By CheckCartText = By.xpath("//div[@class='cart-header lower-shadow-medium-down fivelayer']//h2");
 
 	public void OpenSearchPage_AddToCart_And_Verifyproducts_On_FavoritesPage() throws InterruptedException {
 		SoftAssert sf =new SoftAssert();
